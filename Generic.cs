@@ -6,25 +6,48 @@ using System.Threading.Tasks;
 
 namespace Find_Maximum_Problem
 {
-    internal class Generic
-    {
-        public static T findMax<T>(T x,T y,T z) where T : IComparable<T>
+        public class GenericMaximum<T> where T : IComparable
         {
+            public T[] value;
+            public GenericMaximum(T[] value)
+            {
+                this.value = value;
+            }
 
-            T max = x;
-            if(y.CompareTo(max)>0)
+            public T[] Sort(T[] values)
             {
-                max = y;
+                Array.Sort(values);
+                return values;
+
             }
-            else if(z.CompareTo(max)>0)
+
+            void add(params int[] a)
             {
-                max=z;
+
             }
-            return max;
-            
-            
+
+
+            public T MaxValue(params T[] values)
+            {
+                var sorted_values = Sort(values);
+
+                return sorted_values[sorted_values.Length - 1];
+            }
+
+            public T MaxMethod()
+            {
+                var max = MaxValue(this.value);
+                return max;
+            }
+
+            public void PrintMaxValue()
+            {
+                var max = MaxValue(this.value);
+                Console.WriteLine("Maximum value is " + max);
+            }
         }
-      
-    }
- }
+
+
+}
+
 
